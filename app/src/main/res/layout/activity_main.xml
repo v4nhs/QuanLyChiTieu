@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/purple_700">
+
+    <!-- Top Button Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_tien_chi"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="TIỀN CHI"
+            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/teal_200"
+            android:layout_marginEnd="8dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_tien_thu"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="TIỀN THU"
+            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/gray_light"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Main Content Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_background"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Input Fields -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Ngày"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/edt_ngay"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Chọn ngày"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Ghi chú"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/edt_ghi_chu"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Chưa nhập vào"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Thu Nhập"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/edt_thu_nhap"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="nghìn vnđ"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="14sp"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <!-- Category Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh Mục Chi"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp"
+            android:gravity="center" />
+
+        <!-- Category Grid -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btn_nhap_khoan_chi"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Nhập Khoản Chi"
+            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/gray_dark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+    <!-- Bottom Navigation Icons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_home"
+            android:layout_margin="12dp"
+            android:background="@drawable/circle_background"
+            android:padding="8dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_chart"
+            android:layout_margin="12dp"
+            android:background="@drawable/circle_background"
+            android:padding="8dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_calendar"
+            android:layout_margin="12dp"
+            android:background="@drawable/circle_background"
+            android:padding="8dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_settings"
+            android:layout_margin="12dp"
+            android:background="@drawable/circle_background"
+            android:padding="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
