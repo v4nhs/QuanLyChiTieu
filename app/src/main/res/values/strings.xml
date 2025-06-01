@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">QuanLyChiTieu</string>
+    <string name="so_tien_chi_hint">Số tiền chi</string>
+    <string name="danh_muc_chi_title">Danh Mục Chi</string>
+    <string name="so_tien_thu_hint">Số tiền thu</string>
+    <string name="danh_muc_thu_title">Danh Mục Thu</string>
+    <string name="vui_long_nhap_so_tien">Vui lòng nhập số tiền</string>
+    <string name="chon_ngay_hint">Chọn ngày</string>
+</resources>
