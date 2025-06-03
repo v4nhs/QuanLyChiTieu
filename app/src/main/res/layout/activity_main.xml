@@ -22,13 +22,12 @@
         android:elevation="4dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/main_bottom_navigation"
+            android:id="@+id/mainBottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bottom_nav_light_background"
-            app:menu="@menu/bottom_nav_menu"
-            app:itemIconTint="@color/bottom_nav_item_tint_selector_light"
-            app:itemTextColor="@color/bottom_nav_item_tint_selector_light"
-            app:itemActiveIndicatorStyle="@style/App.BottomNavigation.Indicator.Light" />
+            app:menu="@menu/bottom_nav_menu"/>
+<!--            app:itemIconTint="@color/nav_item_color_state"-->
+<!--            app:itemTextColor="@color/nav_item_color_state" -->
+
     </LinearLayout>
 </RelativeLayout>

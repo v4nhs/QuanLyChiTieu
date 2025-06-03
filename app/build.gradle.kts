@@ -69,7 +69,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
 
-    implementation("com.anychart:anychart-android:1.1.2")
 
     // Test dependencies
     testImplementation(libs.junit)

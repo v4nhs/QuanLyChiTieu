@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InputFragment">
+    android:fillViewport="true" tools:context=".InputFragment">
+
     <LinearLayout
         android:id="@+id/top_section_container"
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnTienChi"
-                style="@style/Widget.MaterialComponents.Button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -101,8 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="Số tiền"
-            app:suffixText="Nghìn vnđ"
-            app:suffixTextColor="?android:attr/textColorHint"
+            app:suffixText="Nghìn vnđ" app:suffixTextColor="?android:attr/textColorHint"
             android:textColorHint="?android:attr/textColorHint"
             app:boxBackgroundColor="@color/light_input_field_background"
             app:boxStrokeColor="@color/light_input_field_stroke"
@@ -133,148 +133,24 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"/>
 
-        <GridLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:rowCount="2"
-            android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_food" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ăn uống"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_daily" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hàng ngày"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_clothes" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Quần áo"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_beauty" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mỹ phẩm"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_social" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phí giao lưu"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_medical" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Y tế"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-        </GridLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNhapKhoanChi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nhập Khoản Chi"
-            android:textColor="@color/light_button_neutral_text"
-            app:backgroundTint="@color/light_button_neutral_background"
-            app:cornerRadius="8dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"/>
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3" tools:listitem="@layout/item_category" tools:itemCount="6" /> <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNhapKhoanChi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhập Khoản Chi"
+        android:textColor="@color/light_button_neutral_text"
+        app:backgroundTint="@color/light_button_neutral_background"
+        app:cornerRadius="8dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
 </ScrollView>
