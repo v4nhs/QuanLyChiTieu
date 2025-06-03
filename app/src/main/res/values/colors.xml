@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="app_orange_accent">#FFA726</color>
-    <color name="bottom_nav_light_selected_item">@color/app_orange_accent</color>
-    <color name="bottom_nav_light_unselected_item">#757575</color>
-
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="light_app_background">#F9F9F9</color>
-    <color name="light_text_primary">#212121</color>
-    <color name="light_text_secondary">#757575</color>
-    <color name="light_input_field_background">#EDEDED</color>
-    <color name="light_input_field_stroke">#BDBDBD</color>
-    <color name="light_button_neutral_background">#E0E0E0</color>
-    <color name="light_button_neutral_text">#424242</color>
-    <color name="app_teal">#00ACC1</color>
+    <color name="app_teal">#008577</color>
     <color name="app_teal_text_on_solid">#FFFFFF</color>
     <color name="app_teal_text_on_outlined">@color/app_teal</color>
-    <color name="bottom_nav_light_background">#FFFFFF</color>
-    <color name="teal_200_custom">@color/app_teal</color>
-    <color name="light_grey_background">#F5F5F5</color>
-    <color name="calendar_header_text">#424242</color>
-    <color name="calendar_date_text">#212121</color>
-    <color name="calendar_selected_date_bg">#E0E0E0</color>
-    <color name="summary_text_label">#757575</color>
-    <color name="summary_text_amount">#212121</color>
-    <color name="divider_color">#E0E0E0</color>
-    <color name="text_secondary">#757575</color>
+    <color name="light_input_field_background">#F5F5F5</color>
+    <color name="light_input_field_stroke">#D1D1D1</color>
+    <color name="light_button_neutral_text">#000000</color>
+    <color name="light_button_neutral_background">#E0E0E0</color>
     <color name="statistic_title_text">#000000</color>
     <color name="statistic_spinner_text">#424242</color>
-    <color name="statistic_legend_text">#424242</color>
-    <color name="income_green">#4CAF50</color> <color name="expense_red">#F44336</color>  <color name="list_item_category_text">#212121</color>
-    <color name="list_item_divider">#E0E0E0</color>
+    <color name="statistic_legend_text">#616161</color>
+    <color name="list_item_category_text">#212121</color>
+    <color name="list_item_divider">#BDBDBD</color>
+    <color name="income_green">#4CAF50</color>
+    <color name="expense_red">#F44336</color>
+    <color name="category_selected_background">#E0F2F1</color>
+    <color name="app_orange_accent">#FF9800</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_app_background">#FAFAFA</color>
+    <color name="light_text_primary">#DE000000</color>
+    <color name="light_text_secondary">#8A000000</color>
+    <color name="black">#FF000000</color>
 
+    <color name="calendar_date_text">#DE000000</color>
+    <color name="calendar_header_text">#00796B</color>
+
+    <color name="bottom_nav_light_selected_item">#008577</color>
+    <color name="bottom_nav_light_unselected_item">#757575</color>
+    <color name="light_grey_background">#F5F5F5</color>
+    <color name="bottom_nav_light_background">@color/white</color>
+    <color name="summary_text_label">#757575</color>
+    <color name="summary_text_amount">@color/black</color>
+    <color name="divider_color">#BDBDBD</color>
 
 </resources>

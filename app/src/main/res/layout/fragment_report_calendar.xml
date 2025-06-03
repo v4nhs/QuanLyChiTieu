@@ -13,17 +13,15 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/tvMonthYearSelector"
-        android:layout_width="match_parent"
+        android:id="@+id/tvDailySummaryTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tháng 5, 2025"
+        android:text="Tổng chi tiêu và thu nhập ngày"
         android:textSize="18sp"
+        android:textStyle="bold"
         android:textColor="?android:attr/textColorPrimary"
-        android:padding="12dp"
-        android:background="@drawable/bg_rounded_light_grey"
-        app:drawableTint="?android:attr/textColorSecondary"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="16dp"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"/>
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -66,10 +64,11 @@
                 android:id="@+id/tvTotalIncome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50.000.000đ"
+                tools:text="50.000.000đ"
+                android:text="0đ"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/summary_text_amount"
+                android:textColor="@color/income_green"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
@@ -98,10 +97,11 @@
                 android:id="@+id/tvTotalExpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20.000.000đ"
+                tools:text="20.000.000đ"
+                android:text="0đ"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/summary_text_amount"
+                android:textColor="@color/expense_red"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
@@ -130,7 +130,8 @@
                 android:id="@+id/tvNetTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="30.000.000đ"
+                tools:text="30.000.000đ"
+                android:text="0đ"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/summary_text_amount"
