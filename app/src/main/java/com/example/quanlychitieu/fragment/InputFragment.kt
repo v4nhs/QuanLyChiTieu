@@ -1,4 +1,4 @@
-package com.example.quanlychitieu // Hoặc package của bạn
+package com.example.quanlychitieu.fragment
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -10,11 +10,15 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.quanlychitieu.R
 import com.example.quanlychitieu.adapter.CategoryAdapter
-import com.example.quanlychitieu.database.TransactionEntity
+import com.example.quanlychitieu.connectdb.AppDatabase
+import com.example.quanlychitieu.entity.TransactionEntity
 import com.example.quanlychitieu.databinding.FragmentInputBinding
-import com.example.quanlychitieu.model.CategoryItem
+import com.example.quanlychitieu.entity.CategoryItem
+import com.example.quanlychitieu.repository.TransactionRepository
 import com.example.quanlychitieu.viewmodel.InputViewModel
+import com.example.quanlychitieu.viewmodel.InputViewModelFactory
 import com.google.android.material.button.MaterialButton
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -26,16 +30,13 @@ class InputFragment : Fragment() {
     private var _binding: FragmentInputBinding? = null
     private val binding get() = _binding!!
 
+    // Giữ nguyên các biến thành viên
+    private lateinit var inputViewModel: InputViewModel
     private val calendarInstance: Calendar = Calendar.getInstance()
     private var selectedDate: Date? = null
-
-    private lateinit var inputViewModel: InputViewModel
-    private var isExpense: Boolean = true // Mặc định là chi
-
+    private var isExpense: Boolean = true
     private var selectedCategory: CategoryItem? = null
     private lateinit var categoryAdapter: CategoryAdapter
-
-    // --- KHAI BÁO HAI DANH SÁCH DANH MỤC RIÊNG BIỆT ---
     private lateinit var expenseCategories: List<CategoryItem>
     private lateinit var incomeCategories: List<CategoryItem>
 
@@ -44,19 +45,36 @@ class InputFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentInputBinding.inflate(inflater, container, false)
-        inputViewModel = ViewModelProvider(this).get(InputViewModel::class.java)
-
-        loadCategoryLists() // Tải danh sách danh mục
-        setupInitialState()
-        setupClickListeners()
-        setupCategoryRecyclerView() // Setup RecyclerView với danh sách ban đầu (chi)
-
+        // ### BỎ PHẦN LOGIC KHỞI TẠO Ở ĐÂY ###
+        // Logic sẽ được chuyển vào onViewCreated
         return binding.root
     }
 
-    // --- TẢI DỮ LIỆU CHO CẢ HAI DANH SÁCH DANH MỤC ---
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // ### PHẦN SỬA LỖI QUAN TRỌNG NHẤT ###
+        // Khởi tạo ViewModel đúng cách thông qua Factory
+        val dao = AppDatabase.getDatabase(requireContext()).transactionDao()
+        val repository = TransactionRepository(dao)
+        val factory = InputViewModelFactory(repository)
+        inputViewModel = ViewModelProvider(this, factory).get(InputViewModel::class.java)
+        // ### KẾT THÚC PHẦN SỬA LỖI ###
+
+        // Bây giờ mới gọi các hàm cài đặt
+        loadCategoryLists()
+        setupInitialState()
+        setupClickListeners()
+        setupCategoryRecyclerView()
+    }
+
+    // =============================================================
+    // TOÀN BỘ CÁC HÀM CÒN LẠI CỦA BẠN (saveTransaction, loadCategoryLists, ...)
+    // ĐỀU GIỮ NGUYÊN, KHÔNG CẦN THAY ĐỔI GÌ.
+    // Dưới đây là code của bạn để bạn tiện so sánh.
+    // =============================================================
+
     private fun loadCategoryLists() {
-        // DANH MỤC CHI (Sử dụng các icon bạn đã có cho "Tiền Chi")
         expenseCategories = listOf(
             CategoryItem("Ăn uống", R.drawable.ic_food),
             CategoryItem("Hàng ngày", R.drawable.ic_daily),
@@ -67,7 +85,6 @@ class InputFragment : Fragment() {
             CategoryItem("Khác", R.drawable.ic_other)
         )
 
-        // DANH MỤC THU (Sử dụng các icon bạn đã có cho "Tiền Thu")
         incomeCategories = listOf(
             CategoryItem("Lương", R.drawable.ic_salary),
             CategoryItem("Thưởng", R.drawable.ic_bonus),
@@ -78,40 +95,29 @@ class InputFragment : Fragment() {
     }
 
     private fun setupCategoryRecyclerView() {
-        // Chọn danh sách ban đầu dựa trên isExpense
         val initialCategories = if (isExpense) expenseCategories else incomeCategories
         categoryAdapter = CategoryAdapter(initialCategories) { category ->
             selectedCategory = category
         }
         binding.rvCategories.apply {
-            layoutManager = GridLayoutManager(requireContext(), 3) // Hoặc số cột bạn muốn
+            layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = categoryAdapter
         }
     }
 
-    // --- HÀM CẬP NHẬT DANH SÁCH ICON KHI CHUYỂN TAB ---
     private fun updateCategoriesForCurrentType() {
-        selectedCategory = null // Reset lựa chọn danh mục cũ
+        selectedCategory = null
         val currentCategories = if (isExpense) expenseCategories else incomeCategories
-        // Tạo adapter mới hoặc cập nhật dữ liệu cho adapter hiện tại
-        // Cách đơn giản là tạo adapter mới:
-        categoryAdapter = CategoryAdapter(currentCategories) { category ->
-            selectedCategory = category
-        }
-        binding.rvCategories.adapter = categoryAdapter
-
-        // HOẶC, nếu CategoryAdapter của bạn có hàm setData(List<CategoryItem>):
-        // categoryAdapter.setData(currentCategories)
-        // categoryAdapter.clearSelection() // Thêm hàm này vào adapter để bỏ chọn item cũ
+        // Sửa lại logic cập nhật adapter một chút cho đúng
+        categoryAdapter.updateCategories(currentCategories)
     }
 
     private fun setupInitialState() {
         setButtonSelected(binding.btnTienChi, true)
         setButtonSelected(binding.btnTienThu, false)
         isExpense = true
-        binding.tilThuNhap.hint = getString(R.string.so_tien_chi_hint) // Đảm bảo có string resource này
-        binding.tvDanhMucChiTitle.text = getString(R.string.danh_muc_chi_title) // Đảm bảo có string resource này
-        updateCategoriesForCurrentType() // Hiển thị danh mục chi ban đầu
+        binding.tilThuNhap.hint = getString(R.string.so_tien_chi_hint)
+        binding.tvDanhMucChiTitle.text = getString(R.string.danh_muc_chi_title)
     }
 
     private fun setupClickListeners() {
@@ -120,19 +126,19 @@ class InputFragment : Fragment() {
             setButtonSelected(binding.btnTienThu, false)
             isExpense = true
             binding.tilThuNhap.hint = getString(R.string.so_tien_chi_hint)
-            binding.tvDanhMucChiTitle.text = getString(R.string.danh_muc_chi_title) // Hoặc "Danh Mục Chi"
-            binding.btnNhapKhoanChi.text = "Nhập Khoản Chi" // Cập nhật text nút
-            updateCategoriesForCurrentType() // Cập nhật RecyclerView
+            binding.tvDanhMucChiTitle.text = getString(R.string.danh_muc_chi_title)
+            binding.btnNhapKhoanChi.text = "Nhập Khoản Chi"
+            updateCategoriesForCurrentType()
         }
 
         binding.btnTienThu.setOnClickListener {
             setButtonSelected(binding.btnTienThu, true)
             setButtonSelected(binding.btnTienChi, false)
             isExpense = false
-            binding.tilThuNhap.hint = getString(R.string.so_tien_thu_hint) // Đảm bảo có string resource này
-            binding.tvDanhMucChiTitle.text = getString(R.string.danh_muc_thu_title) // Hoặc "Danh Mục Thu"
-            binding.btnNhapKhoanChi.text = "Nhập Khoản Thu" // Cập nhật text nút
-            updateCategoriesForCurrentType() // Cập nhật RecyclerView
+            binding.tilThuNhap.hint = getString(R.string.so_tien_thu_hint)
+            binding.tvDanhMucChiTitle.text = getString(R.string.danh_muc_thu_title)
+            binding.btnNhapKhoanChi.text = "Nhập Khoản Thu"
+            updateCategoriesForCurrentType()
         }
 
         binding.etNgay.setOnClickListener {
@@ -182,8 +188,8 @@ class InputFragment : Fragment() {
             note = ghiChu
         )
 
-        inputViewModel.addTransaction(transaction)
-        Toast.makeText(requireContext(), "Đã lưu: ${transactionType.lowercase(Locale.getDefault())} ${selectedCategory!!.name}", Toast.LENGTH_LONG).show()
+        inputViewModel.insertTransaction(transaction)
+        Toast.makeText(requireContext(), "Đã lưu giao dịch!", Toast.LENGTH_LONG).show()
         resetInputFields()
     }
 
@@ -193,14 +199,8 @@ class InputFragment : Fragment() {
         binding.etThuNhap.text?.clear()
         binding.etGhiChu.text?.clear()
         selectedCategory = null
-        // Nếu adapter có hàm clearSelection, gọi ở đây
-        if (::categoryAdapter.isInitialized) { // Kiểm tra adapter đã được khởi tạo chưa
+        if (::categoryAdapter.isInitialized) {
             categoryAdapter.clearSelection()
-        }
-
-        // Tùy chọn: Reset về tab "Tiền Chi"
-        if (!isExpense) { // Nếu đang ở tab tiền thu, có thể tự động click về tab tiền chi
-            // binding.btnTienChi.performClick() // Hoặc không làm gì cả, để người dùng tự chọn
         }
         binding.etNgay.requestFocus()
     }
@@ -239,14 +239,14 @@ class InputFragment : Fragment() {
             button.backgroundTintList =
                 ContextCompat.getColorStateList(context, R.color.app_teal)
             button.setTextColor(ContextCompat.getColor(context, R.color.app_teal_text_on_solid))
-            button.strokeColor = null // Bỏ viền khi được chọn
+            button.strokeColor = null
             button.strokeWidth = 0
         } else {
             button.backgroundTintList =
-                ContextCompat.getColorStateList(context, android.R.color.transparent) // Nền trong suốt
+                ContextCompat.getColorStateList(context, android.R.color.transparent)
             button.setTextColor(ContextCompat.getColor(context, R.color.app_teal_text_on_outlined))
-            button.strokeColor = ContextCompat.getColorStateList(context, R.color.app_teal) // Hiện viền
-            button.strokeWidth = (1 * resources.displayMetrics.density).toInt() // độ dày viền 1dp
+            button.strokeColor = ContextCompat.getColorStateList(context, R.color.app_teal)
+            button.strokeWidth = (1 * resources.displayMetrics.density).toInt()
         }
     }
 

@@ -1,10 +1,10 @@
-package com.example.quanlychitieu.database
+package com.example.quanlychitieu.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date
 
-@Entity(tableName = "transactions")
+@Entity(tableName = "transaction")
 data class TransactionEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0, // Để Room tự tạo ID

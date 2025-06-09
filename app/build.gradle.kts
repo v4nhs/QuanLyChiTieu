@@ -3,7 +3,7 @@ import org.gradle.api.JavaVersion // Import này cần thiết cho JavaVersion.V
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt") // Đã đúng cú pháp cho Kotlin DSL
+    id("kotlin-kapt")
 }
 
 android {
@@ -68,6 +68,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    implementation(libs.mpandroidchart)
 
 
     // Test dependencies
