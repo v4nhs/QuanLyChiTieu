@@ -1,79 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp">
+    android:padding="16dp"
+    android:background="?attr/selectableItemBackground">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/ivCategoryIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:src="@drawable/ic_food"
+        android:contentDescription="Category Icon"/>
+
+    <TextView
+        android:id="@+id/tvBudgetType"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintStart_toEndOf="@id/ivCategoryIcon"
+        app:layout_constraintEnd_toStartOf="@+id/tvBudgetAmount"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Hàng ngày" />
 
-        <ImageView
-            android:id="@+id/ivCalendarIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_calendar"
-            android:contentDescription="Biểu tượng lịch"
-            android:tint="@null"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+    <TextView
+        android:id="@+id/tvBudgetNote"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="?android:attr/textColorSecondary"
+        app:layout_constraintStart_toStartOf="@id/tvBudgetType"
+        app:layout_constraintTop_toBottomOf="@id/tvBudgetType"
+        app:layout_constraintEnd_toEndOf="@id/tvBudgetType"
+        tools:text="Không có ghi chú" />
 
-        <TextView
-            android:id="@+id/tvBudgetNote"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="Không có ghi chú"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="?android:attr/textColorPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivCalendarIcon"
-            android:layout_marginEnd="16dp"/>
+    <TextView
+        android:id="@+id/tvBudgetDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tvBudgetType"
+        app:layout_constraintTop_toBottomOf="@id/tvBudgetNote"
+        tools:text="09/06/2025" />
 
-        <TextView
-            android:id="@+id/tvBudgetType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="Loại phí y tế"
-            android:textSize="14sp"
-            android:textColor="?android:attr/textColorSecondary"
-            app:layout_constraintTop_toBottomOf="@+id/tvBudgetNote"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivCalendarIcon"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="4dp"/>
+    <TextView
+        android:id="@+id/tvBudgetAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/ivDelete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="16dp"
+        tools:text="-100.000 ₫" />
 
-        <TextView
-            android:id="@+id/tvBudgetAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Số tiền: 20.000"
-            android:textSize="14sp"
-            android:textColor="@color/expense_red" app:layout_constraintTop_toBottomOf="@+id/tvBudgetType"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"/>
+    <ImageView
+        android:id="@+id/ivDelete"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_delete"
+        app:tint="?android:attr/textColorSecondary"
+        android:contentDescription="Xóa giao dịch"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-        <TextView
-            android:id="@+id/tvBudgetDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Ngày 20/03/2025"
-            android:textSize="14sp"
-            android:textColor="?android:attr/textColorSecondary"
-            app:layout_constraintTop_toBottomOf="@+id/tvBudgetAmount"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="4dp"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

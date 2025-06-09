@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="?android:attr/colorBackground"
-    tools:context=".BudgetDetailFragment">
+    tools:context=".fragment.BudgetDetailFragment">
     <TextView
     android:id="@+id/tvFragmentTitle"
     android:layout_width="match_parent"

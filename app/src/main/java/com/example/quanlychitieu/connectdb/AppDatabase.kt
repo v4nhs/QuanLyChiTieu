@@ -1,14 +1,18 @@
-package com.example.quanlychitieu.database
+package com.example.quanlychitieu.connectdb
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters // Quan trọng nếu bạn dùng Date
+import androidx.room.TypeConverters
 
-// Nếu bạn có Date trong Entity, bạn cần TypeConverter
-@Database(entities = [TransactionEntity::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class) // Thêm dòng này
+import com.example.quanlychitieu.converters.Converters
+import com.example.quanlychitieu.database.TransactionDao
+import com.example.quanlychitieu.entity.TransactionEntity
+
+// SỬA LẠI VERSION Ở ĐÂY
+@Database(entities = [TransactionEntity::class], version = 2, exportSchema = false) // <-- TĂNG LÊN 2 (HOẶC SỐ TIẾP THEO)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun transactionDao(): TransactionDao
@@ -22,9 +26,9 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "expense_tracker_db" // Tên database file
+                    "expense_tracker_db" // Tên file database
                 )
-                    // .fallbackToDestructiveMigration() // Nếu bạn thay đổi schema và không muốn viết migration
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance

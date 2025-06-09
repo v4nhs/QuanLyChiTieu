@@ -1,29 +1,18 @@
-// settings.gradle.kts
-
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
 }
-
-// THÊM KHỐI NÀY VÀO ĐỂ KHAI BÁO KHO LƯU TRỮ CHO THƯ VIỆN
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS) // Khuyến khích để quản lý tập trung
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()       // Cần cho thư viện AndroidX như Room
-        mavenCentral() // Kho lưu trữ phổ biến
-        // Nếu bạn vẫn dùng AnyChart hoặc các thư viện khác từ JitPack, hãy thêm dòng này:
-        // maven { url = uri("https://jitpack.io") }
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
-rootProject.name = "QuanLyChiTieu" // Tên project của bạn
+rootProject.name = "Test"
 include(":app")

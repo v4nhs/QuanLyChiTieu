@@ -1,4 +1,4 @@
-package com.example.quanlychitieu
+package com.example.quanlychitieu.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import com.example.quanlychitieu.R
 
 class SettingsFragment : Fragment() {
 

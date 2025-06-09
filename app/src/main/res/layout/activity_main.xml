@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".fragment.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fragment_container"
@@ -26,8 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/bottom_nav_menu"/>
-<!--            app:itemIconTint="@color/nav_item_color_state"-->
-<!--            app:itemTextColor="@color/nav_item_color_state" -->
 
     </LinearLayout>
 </RelativeLayout>

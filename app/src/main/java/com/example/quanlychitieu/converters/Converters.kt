@@ -1,4 +1,4 @@
-package com.example.quanlychitieu.database
+package com.example.quanlychitieu.converters
 
 import androidx.room.TypeConverter
 import java.util.Date
