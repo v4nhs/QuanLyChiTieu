@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val sharedPrefs = getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
-        val savedThemeMode = sharedPrefs.getInt("theme_mode", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        val sharedPrefs = getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
+        val savedThemeMode = sharedPrefs.getInt("selected_theme", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         AppCompatDelegate.setDefaultNightMode(savedThemeMode)
 
         super.onCreate(savedInstanceState)

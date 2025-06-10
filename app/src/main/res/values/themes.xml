@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.QuanLyChiTieu.Light" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.QuanLyChiTieu.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/app_teal</item>
         <item name="colorOnPrimary">@color/app_teal_text_on_solid</item>
-
         <item name="colorSecondary">@color/app_orange_accent</item>
         <item name="colorOnSecondary">@color/white</item>
-
         <item name="android:colorBackground">@color/light_app_background</item>
         <item name="colorSurface">@color/light_app_background</item>
         <item name="colorOnSurface">@color/light_text_primary</item>
-
         <item name="android:textColorPrimary">@color/light_text_primary</item>
         <item name="android:textColorSecondary">@color/light_text_secondary</item>
         <item name="android:textColorHint">@color/light_text_secondary</item>
-
         <item name="android:statusBarColor">@color/light_app_background</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-
         <item name="colorOutline">@color/list_item_divider</item>
-
-        <!-- Thêm các màu cho navigation bar nếu cần -->
-
         <item name="colorOnSurfaceVariant">@color/light_text_secondary</item>
         <item name="colorSurfaceVariant">@color/light_app_background</item>
     </style>
 
-    <style name="Theme.QuanLyChiTieu" parent="Theme.QuanLyChiTieu.Light" />
+    <style name="Theme.QuanLyChiTieu" parent="Theme.QuanLyChiTieu.Base" />
+
 
     <style name="CustomCalendarView" parent="android:Widget.CalendarView">
         <item name="android:focusedMonthDateColor">@color/calendar_date_text</item>
@@ -43,18 +36,15 @@
         <item name="android:textColor">@color/calendar_date_text</item>
     </style>
 
-    <!-- Chỉnh sửa style indicator của BottomNavigationView -->
     <style name="App.BottomNavigation.Indicator.Light" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/app_orange_accent</item>
         <item name="android:width">56dp</item>
         <item name="android:height">32dp</item>
-        <!-- Thay đổi itemPaddingTop/Bottom thành android:paddingTop/android:paddingBottom -->
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.App.Pill</item>
     </style>
 
-    <!-- Parent không được để trống, dùng style shape Material3 chuẩn -->
     <style name="ShapeAppearance.App.Pill" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
