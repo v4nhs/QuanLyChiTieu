@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/bg_rounded_light_grey"
+        android:background="?attr/colorSurfaceVariant"
         android:padding="16dp">
 
         <RelativeLayout
@@ -76,7 +76,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/divider_color"
+            android:background="?attr/colorOutline"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"/>
 
@@ -109,7 +109,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/divider_color"
+            android:background="?attr/colorOutline"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"/>
 

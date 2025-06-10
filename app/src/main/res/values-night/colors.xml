@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="light_app_background">#121212</color> <color name="light_text_primary">#FFFFFF</color> <color name="light_text_secondary">#B3FFFFFF</color> <color name="list_item_divider">#1FFFFFFF</color> <color name="app_teal">#4DB6AC</color> <color name="app_teal_text_on_solid">#000000</color>
+    <color name="app_orange_accent">#FFB74D</color> <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="calendar_date_text">#FFFFFF</color>
+    <color name="calendar_header_text">#B3FFFFFF</color>
+
+</resources>
